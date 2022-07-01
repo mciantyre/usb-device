@@ -173,7 +173,8 @@ fn bulk_loopback(dev, _out) {
             data.len(),
             "bulk write len {}", len);
 
-        if *len > 0 && *len % 64 == 0 {
+        const MAX_PACKET_SIZE: usize = usb_device::test_class::sizes::BULK_ENDPOINT as usize;
+        if *len > 0 && *len % MAX_PACKET_SIZE == 0 {
             assert_eq!(
                 dev.write_bulk(0x01, &[], TIMEOUT)
                     .expect("bulk write zero-length packet"),
