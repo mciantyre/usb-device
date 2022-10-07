@@ -7,8 +7,7 @@ use crate::Result;
 use core::cmp;
 
 #[cfg(feature = "test-class-high-speed")]
-#[doc(hidden)] // Only exposed for device tests.
-pub mod sizes {
+mod sizes {
     pub const BUFFER: usize = 2048;
     pub const CONTROL_ENDPOINT: u8 = 64;
     pub const BULK_ENDPOINT: u16 = 512;
@@ -16,8 +15,7 @@ pub mod sizes {
 }
 
 #[cfg(not(feature = "test-class-high-speed"))]
-#[doc(hidden)] // Only exposed for device tests.
-pub mod sizes {
+mod sizes {
     pub const BUFFER: usize = 256;
     pub const CONTROL_ENDPOINT: u8 = 8;
     pub const BULK_ENDPOINT: u16 = 64;
